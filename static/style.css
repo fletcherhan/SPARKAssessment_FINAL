@@ -1,0 +1,301 @@
+body{
+    background-image: url("images/Background/backstar.png");
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    font-family: "Quicksand";
+
+}
+#bird3{
+    width:13%;float:right; margin-right:6%;transform: rotate(-0.03turn);
+}
+#bird4{
+    margin-top: -10px; margin-left:6%; -moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); width:21%;
+}
+#bird1{
+    width:19%; float:right; margin-right: 6%; margin-top: 4%; transform: rotate(0.04turn);
+}
+#bird2{
+    width: 18%; float:left; margin-left:6%; margin-top: 4%; transform: rotate(-0.05turn);
+}
+.container{
+    width:1280px;
+    height:600px;
+    display:flex;
+    justify-content: center;
+}
+.box{
+    width:45%;
+    height: 95%;
+    min-height:570px;
+    max-height:600px;
+    min-width:540px;
+    max-width:540px;
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-radius: 40px;
+}
+.top{
+    height:55%;
+    width:100%;
+    border-radius: 38px 38px 0px 0px;
+    background-image: url("images/Background/backgrad.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#about{
+    width: 70%;
+}
+#star1, #star2 {
+    width: 13%;
+}
+.toptop{
+    width: 100%;
+    height: 33%;
+}
+.topmid{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.topbot{
+    width: 100%;
+    height: 33%;
+}
+
+.mid{
+    height:35%;
+    width:100%;
+    margin-top:3%;
+    text-align: center;
+    font-weight: 900;
+    font-size: 9px;
+}
+.bot{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.startbutton{
+    background-color: #0077CC;
+    border: none;
+    color: white;
+    padding: 10px 37px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 19px;
+    font-family: "Quicksand";
+    font-weight: 900;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    margin-bottom: 3%;
+    transition: all .3s;
+}
+.startbutton:hover {
+    background-color: #0065ad;
+}
+.brmedium {
+    display: block;
+    margin-bottom: 8px;
+}
+.bottomcentered {
+    position: absolute;
+    top: 89%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.topcentered {
+    position: absolute;
+    top: -6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.imagecontainer{
+    position: relative;
+    text-align: center;
+}
+.buttonscontainer {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  margin-bottom:-20px;
+}
+.tit{
+    font-size: 32px;
+}
+.subtit{
+    font-size: 28px;
+}
+.time{
+    font-size: 23px;
+}
+.midsecond{
+    font-size: 20px; text-align: left; margin-left: 4%;margin-right: 4%;
+}
+.SB, .P, .A, .R, .KS{
+    width:160px; margin-right: 5px; margin-left: 5px;
+}
+
+#SBheading, #Pheading, #Aheading, #Rheading{
+    color:white; background-color:black; width:94%;padding:2px 0px 2px 0px
+}
+
+#KSheading{
+    color:white; background-color:black; width:95%;padding:2px 0px 2px 0px
+}
+
+.midthree{
+    font-size: 21px; text-align: left; margin-left: 4%;margin-right: 4%;
+}
+.midfour{
+    font-size: 21px; text-align: left; margin-left: 4%;margin-right: 4%;
+}
+.listfour{
+   margin-top:5px;
+}
+@media screen and (max-width:500px) {
+    body{
+        margin:0px;
+    }
+    .midthree{
+        font-size: 15px;
+    }
+    .container{
+        width: 100%;
+        height:100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .box{
+        width:90%;
+        height: 80%;
+        background-color:white;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height:500px;
+        min-width:300px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 40px;
+    }
+    .mid{
+        height:35%;
+        width:100%;
+        margin-top:3%;
+        text-align: center;
+        font-weight: 900;
+        font-size: 9px;
+        margin-top:0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .tit{
+        font-size: 22px;
+    }
+    .subtit{
+        font-size: 20px;
+    }
+    .time{
+        font-size: 21px;
+    }
+    .midsecond{
+        font-size: 16px;
+    }
+    #bird1{
+        width:30%;
+    }
+    #bird2{
+        width:25%;
+    }
+    #bird3{
+        width:20%;
+    }
+    #bird4{
+        width:30%;
+    }
+    .SB, .P, .A {
+        width:100px;
+    }
+    .R, .KS{
+        width:130px;  margin-right: 10px; margin-left: 10px
+    }
+    #SBheading, #Pheading, #Aheading{
+        width:90%;
+    }
+    #KSheading,  #Rheading{
+        width:87%
+    }
+    #SBbar, #KSbar{
+        display:none;
+    }
+    .midfour{
+        font-size: 16px;
+    }
+    .listfour{
+        margin-top:0px;
+    }
+    #startmid{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .lines{
+        display:none;
+    }
+    .bars{
+        width:60px !important;
+    }
+    #Pbar {
+        margin-right:12px;
+    }
+    #Abar{
+        margin-right:16px;
+        margin-left: 16px;
+    }
+    #Rbar{
+        margin-left: 18px;
+    }
+    #midsecond, #midthree{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #midsecond, #topsecond, #topfour, #midfour{
+        height:45%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .tit{
+        font-size: 24px;
+    }
+    }
+
+@media screen and (max-width: 320px) {
+#secondcontinue, #startbutton3{
+    margin-top:20px;
+}
+}

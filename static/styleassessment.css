@@ -1,0 +1,627 @@
+body{
+    background-image: url("images/Background/backstar.png");
+    background-size: cover;
+    display:flex;
+    justify-content: center;
+    font-family: "Quicksand";
+
+}
+#intial{
+  margin-top:-120px; max-width:1500px;overflow: auto;
+}
+.topcentered {
+    position: absolute;
+    top: -6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.imagecontainer{
+    position: relative;
+    text-align: center;
+}
+.buttonscontainer {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  margin-bottom:-20px;
+}
+
+ul {
+    margin-left: -19px;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  #regForm {
+    background-color: rgba(255, 0, 0, 0);
+    padding: 40px;
+    min-height:300px;
+    min-width:700px;
+    height: 85vh;
+    width: 100vw;
+  }
+
+  input {
+    font-family: 'Quicksand';
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+  }
+  select {
+    font-family: 'Quicksand';
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+  }
+
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  select.invalid {
+    background-color: #ffdddd;
+  }
+
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  .questioncontainer {
+    width: 60%;
+    /* To adjust the height as well */
+    height: fit-content;
+    position:absolute;
+    top:60px;
+    background-color: white;
+    padding:40px;
+    border-radius: 30px;
+  }
+  .backgroundtab{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .progressbar{
+    position:absolute;
+    width:100%;
+    margin-top:-110px;
+    display:flex;
+    justify-content: center;
+  }
+  .progressbar img{
+    width: 70%;
+    max-width:779px;
+    max-height:118px;
+  }
+  @media screen and (max-width: 800px) {
+    .progressbar {
+      margin-top:-100px;
+    }
+    .progressbar img{
+      width: 90%;
+    }
+  }
+  button {
+    background-color: #0077CC;
+    border: none;
+    color: white;
+    padding: 10px 37px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 19px;
+    font-family: "Quicksand";
+    font-weight: 900;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    margin-bottom: 3%;
+    transition: all .3s;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .stepfake {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  .stepfakefinished {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+
+  .step.active {
+    opacity: 1;
+  }
+
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #0077CC;
+  }
+
+.centered {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.likert{
+  display:flex;
+  justify-content: center;
+  padding-inline-start: 10px;
+  margin-top:22px;
+}
+
+.likert li {
+    float: left;
+    list-style-type: none;
+    margin-bottom:90px;
+  }
+.headersquestions{
+  text-align:center; display:flex; justify-content: center; font-weight:bold; font-size:18px; margin-top:20px;
+}
+
+/* strongdisagree circle button */
+  .strongdisagree {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .strongdisagree input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .strongcheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    border-color: red;
+  }
+  .strongdisagree:hover input ~ .strongcheckmark {
+    background-color: rgb(240, 240, 240);
+  }
+  .strongdisagree input:checked ~ .strongcheckmark {
+    background-color: red;
+  }
+  .strongcheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .strongdisagree input:checked ~ .strongcheckmark:after {
+    display: block;
+  }
+  .strongdisagree .strongcheckmark:after {
+    left: 11px;
+    top: 5px;
+    width: 8px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* mid disagree circle button */
+  .disagreemid {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .disagreemid input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmarkmid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    border-color: red;
+  }
+  .disagreemid:hover input ~ .checkmarkmid {
+    background-color: rgb(240, 240, 240);
+  }
+  .disagreemid input:checked ~ .checkmarkmid {
+    background-color: red;
+  }
+  .checkmarkmid:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .disagreemid input:checked ~ .checkmarkmid:after {
+    display: block;
+  }
+  .disagreemid .checkmarkmid:after {
+    left: 10px;
+    top: 4px;
+    width: 5px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* regular disagree circle button */
+.disagree {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .disagree input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkmarkdis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    border-color: red;
+  }
+  .disagree:hover input ~ .checkmarkdis {
+    background-color: rgb(240, 240, 240);
+  }
+  .disagree input:checked ~ .checkmarkdis {
+    background-color: red;
+  }
+  .checkmarkdis:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .disagree input:checked ~ .checkmarkdis:after {
+    display: block;
+  }
+  .disagree .checkmarkdis:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* strongagree circle button */
+  .strongagree {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .strongagree input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .agrestrongcheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    border-style:solid;
+    border-width:2px;
+    border-color: green;
+    border-radius: 50%;
+  }
+  .strongagree:hover input ~ .agrestrongcheckmark {
+    background-color: rgb(240, 240, 240);
+  }
+  .strongagree input:checked ~ .agrestrongcheckmark {
+    background-color: green;
+  }
+  .agrestrongcheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .strongagree input:checked ~ .agrestrongcheckmark:after {
+    display: block;
+  }
+  .strongagree .agrestrongcheckmark:after {
+    left: 11px;
+    top: 5px;
+    width: 8px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* mid disagree circle button */
+  .agreemid {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .agreemid input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .agrecheckmarkmid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    border-color: green;
+  }
+  .agreemid:hover input ~ .agrecheckmarkmid {
+    background-color: rgb(240, 240, 240);
+  }
+  .agreemid input:checked ~ .agrecheckmarkmid {
+    background-color: green;
+  }
+  .agrecheckmarkmid:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .agreemid input:checked ~ .agrecheckmarkmid:after {
+    display: block;
+  }
+  .agreemid .agrecheckmarkmid:after {
+    left: 10px;
+    top: 4px;
+    width: 5px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /* regular agree circle button */
+.agree {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default radio button */
+  .agree input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 50%;
+    border-style:solid;
+    border-width:2px;
+    border-color: green;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .agree:hover input ~ .checkmark {
+    background-color: rgb(240, 240, 240);
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .agree input:checked ~ .checkmark {
+    background-color: green;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .agree input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .agree .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+.mobileagreedisagreetext{
+  display:none;
+}
+#mobiletitleR{
+  display:none;
+}
+@media screen and (max-width:770px) {
+  #intial{
+    top:2%;
+    width:90%;
+  }
+}
+@media screen and (max-width:500px) {
+  .titlepagepara{
+    font-size: 14px !important;
+  }
+  .title{
+    font-size: 20px !important;
+  }
+  #disclaimer{
+    font-size: 12px !important;
+  }
+  button{
+      font-size:14px !important;
+  }
+  #regForm{
+    width: 100%;
+    min-width:300px;
+    width: 100%;
+    min-width:300px;
+    /*position: absolute;*/
+    top: 20%;
+    /*left: 50%;*/
+    /*transform: translate(-50%, 0%) }*/
+  }
+  #intial{
+    top:2%;
+    width:100%;
+    padding: 40px 15px 40px 15px;
+  }
+  .questioncontainer{
+    width:95% !important;
+  }
+  .SD, .SA {
+    display:none;
+  }
+  .likert li {
+    display:none;
+  }
+  .mobileagreedisagreetext{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .centered{
+    font-size: 50px !important;
+  }
+  .progressbar {
+    margin-top:-90px;
+  }
+  .progressbar img{
+    width: 98%;
+  }
+  .backgroundtab div{
+    width: 100%;
+    text-align: center;
+  }
+  #regtitleR {
+    display:none !important;
+  }
+  #mobiletitleR{
+    display:block;
+    margin-bottom:20px;
+  }
+  .titlepagepara{
+    font-size: 17px !important;
+  }
+  .title{
+    font-size: 40px !important;
+  }
+
+}

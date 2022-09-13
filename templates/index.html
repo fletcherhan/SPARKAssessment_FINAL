@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#06103d">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#06103d">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#06103d">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPARK Assessment - Welcome</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class ="container" id = "container1">
+      <div class = "box">
+        <div class = "top">
+          <div class ="toptop">
+            <img src="/static/images/4Birds/Lawyer Lincoln.png" id="bird2">
+            <img src="/static/images/4Birds/Content Creator Chris png.png" id="bird1">
+          </div>
+          <div class ="topmid">
+            <img src="/static/images/stars.png" id="star1" style="margin-right:35%;">
+            <img src="/static/images/about.png" id="about">
+            <img src="/static/images/stars.png" id="star2" style="margin-left:35%;-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1);">
+          </div>
+          <div class ="topbot">
+            <img src="/static/images/4Birds/WebDev Wendy.png" id="bird4">
+            <img src="/static/images/4Birds/Social Worker Sabrina.png" id="bird3">
+          </div>
+        </div>
+        <div class = "mid" id ="startmid">
+          <div class = "tit" >
+            <span class="lines">━━</span>  SPARK Assessment <span class="lines">━━</span>
+          </div><br>
+          <div class = "subtit" >
+            Discover Your <br> Career Resilience Level
+          </div><br>
+          <div class = "time" >
+            (~10 minutes)
+          </div>
+        </div>
+        <div class = "bot">
+          <button class ="startbutton" onclick="start()"> START </button>
+        </div>
+      </div>
+    </div>
+    <div class ="container" id = "container2" style="display:none;">
+      <div class = "box">
+        <div id = "topsecond" class = "top" style="background-image: url('/static/images/laptop.png');">
+        </div>
+        <div class = "mid" id="midsecond">
+          <div class = "midsecond" >
+          Complete the SPARK Assessment and use the insights to help you take better control of your career:
+          <span class="brmedium"></span>  ✓ Be more proactive in navigating your career
+            <br> ✓ Identify strategies to habitually increase your career resilience
+            <br> ✓ Harness the opportunity to thrive in your career in a sustainable manner
+        </div>
+        </div>
+        <div class = "bot">
+          <button class ="startbutton" id = "secondcontinue" onclick="continue1()"> CONTINUE</button>
+        </div>
+      </div>
+    </div>
+    <div class ="container" id = "container3" style="display:none;">
+      <div class = "box">
+        <div class = "top">
+          <div class ="toptop" style="display: flex; justify-content: center; align-items: center;">
+            <img src="/static/images/about.png" id="about" style="width:220px;">
+          </div>
+          <div class ="topmid" style="flex-direction: row;">
+            <div class ="imagecontainer">
+              <img src="/static/images/CatBackground/SelfBelief1-min.JPG" class = "SB">
+              <div class ="bottomcentered" id = "SBheading"> Self-belief</div>
+            </div>
+            <div class ="imagecontainer">
+              <img src="/static/images/CatBackground/Purpose1-min.JPG" class = "P" >
+              <div class ="bottomcentered" id = "Pheading"> Purpose</div>
+            </div>
+            <div class ="imagecontainer">
+              <img src="/static/images/CatBackground/Adaptability1-min.JPG" class = "A" >
+              <div class ="bottomcentered" id = "Aheading" > Adaptability</div>
+            </div>
+          </div>
+          <div class ="topmid" style="flex-direction: row; margin-top: 20px; margin-bottom: 20px;">
+            <div class ="imagecontainer">
+              <img src="/static/images/CatBackground/Resourcefulness1-min.JPG" class = "R" >
+              <div class ="bottomcentered" id = "Rheading"> Resourcefulness</div>
+            </div>
+            <div class ="imagecontainer">
+              <img src="/static/images/CatBackground/KindredSpirits1-min.JPG" class = "KS">
+              <div class ="bottomcentered" id = "KSheading"> Kindred Spirits</div>
+            </div>
+          </div>
+        </div>
+        <div class = "mid">
+          <div class = "midthree">
+            You will be shown a series of statements related to your beliefs and behaviours revolving around the five pillars of career resilience: <span style="font-weight:400;">Self-belief, Purpose, Adaptability, Resourcefulness and Kindred Spirits.  </span>
+            <br><br> You will be asked how strongly you agree or disagree with each statement.
+        </div>
+        </div>
+        <div class = "bot">
+          <button class ="startbutton" id = "startbutton3" onclick="continue2()">CONTINUE</button>
+        </div>
+      </div>
+    </div>
+    <div class ="container" id = "container4" style="display:none;">
+      <div class = "box">
+        <div class = "top" id = "topfour">
+          <div class ="toptop" style="height:30%; display: flex; justify-content: center; align-items: center;">
+            <img src="/static/images/about.png" id="about" style="width:220px;margin-bottom: 10px;">
+          </div>
+          <div class ="topmid" style="height:70%; flex-direction: row; margin-bottom: 35px;">
+            <div id = "SBbar" class ="imagecontainer" style="font-size: 15px; font-weight:bolder;">
+              <img class = "bars" src="/static/images/Icons/graphex1.png" style="width:95px; margin-right: 5px; margin-left: 5px;">
+              <div class ="bottomcentered" style="color:white; width:100%;top: 102%;">Self-belief</div>
+              <div class ="topcentered" style="font-size: 18px; color:white; width:100%;">&nbsp 60%</div>
+            </div>
+            <div id = "Pbar" class ="imagecontainer" style="font-size: 15px; font-weight:bolder;">
+              <img class = "bars" src="/static/images/Icons/graphex2.png" style="width:90px; margin-right: 5px; margin-left: 5px;">
+              <div class ="bottomcentered" style="color:white; width:100%;top: 102%;">Purpose</div>
+              <div class ="topcentered" style="font-size: 18px; color:white; width:100%;">&nbsp 40%</div>
+            </div>
+            <div id = "Abar" class ="imagecontainer" style="font-size: 15px; font-weight:bolder;">
+              <img class = "bars" src="/static/images/Icons/graphex3.png" style="width:90px; margin-right: 5px; margin-left: 5px;">
+              <div class ="bottomcentered" style="color:white; width:100%;top: 102%;">Adaptability</div>
+              <div class ="topcentered" style="font-size: 18px; color:white; width:100%;">&nbsp 76%</div>
+            </div>
+            <div id = "Rbar" class ="imagecontainer" style="font-size: 15px; font-weight:bolder;">
+              <img class = "bars" src="/static/images/Icons/graphex4.png" style="width:90px; margin-right: 5px; margin-left: 5px;">
+              <div class ="bottomcentered" style="color:white; width:100%;top: 107%;">Resourceful-ness</div>
+              <div class ="topcentered" style="font-size: 18px; color:white; width:100%;">&nbsp 55%</div>
+            </div>
+            <div id = "KSbar" class ="imagecontainer" style="font-size: 15px; font-weight:bolder;">
+              <img class = "bars" src="/static/images/Icons/graphex5.png" style="width:90px; margin-right: 5px; margin-left: 5px;">
+              <div class ="bottomcentered" style="color:white; width:100%;top: 107%;">Kindred Spirits</div>
+              <div class ="topcentered" style="font-size: 18px; color:white; width:100%;">&nbsp 30%</div>
+            </div>
+          </div>
+        </div>
+        <div class = "mid" id = "midfour">
+          <div class = "midfour">
+            Upon completing the assessment, you will receive your results in a personalized report containing:
+            <ul class = "listfour">
+              <li>Your “Resilience Quotient” (in %) for each pillar </li>
+              <li>A detailed analysis of your results in each of the five pillars</li>
+              <li>Practical tips, strategies and resources you can use to improve your career resilience</li>
+            </ul>
+          </div>
+        </div>
+        <div class = "bot">
+          <button class ="startbutton" onclick="navtouserdetails()">CONTINUE</button>
+        </div>
+      </div>
+    </div>
+	<script src="/static/script.js"></script>
+  </body>
+</html>

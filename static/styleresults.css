@@ -1,0 +1,302 @@
+body{
+    background-image: url("images/Background/backstar.png");
+    background-repeat: repeat;
+    display:flex;
+    justify-content: center;
+    font-family: "Quicksand";
+    border-radius:10px;
+}
+
+.ToPDF{
+    margin: 0;
+    color:white;
+    background-color: #0077CC;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    border: none;
+    transition: all .3s;
+}
+.ToPDF:hover {
+    opacity: 0.8;
+  }
+
+#birdpicmobile{
+    display:none;
+    min-width: 330px !important;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    width:1280px;
+    height:auto;
+    display:flex;
+    justify-content: center;
+}
+.medianvaluebox{
+    border-style:solid;
+    background-color:black;
+    color:white;
+    height:fit-content;
+    padding:5px;
+}
+.mediantitle{
+    font-weight:bolder;
+    font-size: 15px;
+    display: flex;
+    z-index:5;
+    margin-top:0;
+    margin-bottom:0;
+}
+.mediancolumn{
+    display: flex;
+    align-items: flex-end;
+    padding-bottom:40%;
+}
+h1{
+    text-align:center;
+    font-weight: bolder;
+    font-size:35px;
+    margin-bottom:0px;
+}
+p{
+    font-size: 22px;
+}
+.box{
+    width:85%;
+    height:auto;
+    min-width:540px;
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px 50px 20px 50px;
+    top: 5%;
+    border-radius: 20px;
+    bottom: 5%;
+}
+.barcontainer{
+    display:flex;
+    justify-content: center;
+}
+.loadbar
+{
+     width:120px;
+     height:250px;
+     background-color: #d8d8d8;
+     position:relative;
+     z-index: 0;
+     margin-right:10px !important;
+}
+.loadbar img{
+    width:60%;
+    z-index:4;
+    position: relative;
+    top:35%;
+}
+.bar
+{
+    width:100%;
+    display:block;
+    font-family:arial;
+    font-size:12px;
+    color:#fff;
+    position:absolute;
+    bottom:0;
+    z-index: 1;
+}
+.selfbeliefsec, .purposesec, .adaptsec, .resouresec, .kssec{
+    display: inline-block;
+    margin-right:20px;
+    text-align: center;
+}
+.subtitleprogress{
+    margin-top:5px;
+    font-size:22px;
+    font-weight:bold;
+}
+.learnmoresec{
+    background-image: linear-gradient(45deg, #d2edff,#e1f3ed);
+    margin-left:-50px;
+    margin-right:-50px;
+    padding: 0 50px 20px 50px;
+    margin-bottom: 20px;
+}
+.note{
+    padding:5px 20px 5px 20px;
+    background-color: #f3f3f3;
+    border-style:solid;
+    border-width: 1px;
+    border-color:black;
+}
+ul {
+    list-style-type: none;
+}
+
+
+
+/* ADD THIS*/
+.rqgraphcontainer {
+    margin-top:50px;
+    margin-bottom:50px;
+ display:flex;
+ flex-direction: column;
+}
+.rqbar {
+    height: 50px;
+    width: 100%;
+    border: .5px solid black;
+    position: relative;
+}
+.yourrq{
+  border-right: 3px solid green;
+  background-color: #e1f0da;
+  height: 50px;
+  position:absolute;
+}
+.medianrq{
+    border-right: 3px dashed red;
+    background-color: rgba(255, 255, 255, 0);
+    height: 50px;
+    position:absolute;
+}
+.medianrqtext{
+    margin-top:60px;
+    color:red;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: right;
+    font-size:17px;
+}
+.yourrqtext{
+    margin-top:-30px;
+    color:green;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: right;
+    font-size:17px;
+}
+.redtogreenbar{
+    width:100%;
+    height:5px;
+    background-image: linear-gradient(to right, red , yellow, green);
+    border-radius:200px;
+}
+.explaincontainer{
+    margin-top:30px;
+    display:flex;
+    flex-direction: row;
+
+}
+.explaincontainer p {
+    text-align: center;
+    font-weight:bold;
+    font-size:17px;
+    margin-bottom:4px;
+}
+.numcontainer{
+    margin-top:4px;
+    display:flex;
+    flex-direction: row;
+
+}
+.numcontainer p {
+    text-align: left;
+    font-size:17px;
+    margin-top:4px;
+}
+.butcon{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width:500px) {
+  body{
+    background-image: none;
+    background-color: white;
+  }
+  /* ADD THIS*/
+  .yourrqtext{
+    font-size:14px !important;
+  }
+  .medianrqtext{
+    font-size:14px !important;
+    }
+  .numcontainer p{
+    font-size:14px !important;
+  }
+  .explaincontainer p {
+    font-size: 14px !important;
+  }
+  /* END OF ADD THIS*/
+    .box{
+    top:0;
+    padding:10px;
+    height:100%;
+    bottom:0;
+    min-width:100px;
+    width:94%;
+    border-radius:0;
+    }
+    .learnmoresec{
+        margin-left:-80px;
+        margin-right:-80px;
+        padding: 0 80px 20px 80px;
+        background-image: linear-gradient(45deg, #d2edff,#e1f3ed);
+
+    }
+   .imageabout{
+        width: 300px !important;
+    }
+    p{
+        font-size: 17px !important;
+    }
+    h2 {
+        font-size: 20px !important;
+    }
+    h1{
+        font-size: 25px !important;
+    }
+    .learntext{
+        font-size: 23px !important;
+    }
+    .title{
+        font-size:30px !important;
+    }
+    li{
+        font-size: 17px !important;
+    }
+    #current_date {
+        font-size: 17px !important;
+    }
+    .name{
+        font-size: 25px !important;
+    }
+    #birdpicmobile{
+        display:block;
+        width:100px !important;
+    }
+    .barcontainer{
+        flex-direction: column;
+        align-items: center;
+        border-radius:20px;
+    }
+    .nextsteppic{
+        display:none;
+    }
+    .nexstepbox{
+        margin-left:0 !important;
+    }
+    .iconintext{
+        width: 90px !important;
+    }
+    .resultscon{
+        flex-direction:column;
+    }
+    .resulttext{
+        margin-left:0px !important;
+    }
+}

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPARK Assessment - Results</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="/static/styleresults.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      function pdf(){
+        let body = document.body
+        let html = document.documentElement
+        let height = Math.max(body.scrollHeight, body.offsetHeight,
+                        html.clientHeight, html.scrollHeight, html.offsetHeight)
+        let heightCM = height / 35.35
+        const element = document.getElementById("box");
+        const opt = {
+          margin: 1,
+          filename: "SPARK_Individual_Report.pdf",
+          image: { type: "jpeg", quality: 0.98, allowTaint: true },
+          html2canvas:  { dpi: 96, letterRendering: true, scrollY: 0 },
+          jsPDF: {
+              orientation: 'portrait',
+              unit: 'cm',
+              format: [32, heightCM],
+            },
+        };
+         html2pdf().set(opt).from(element).save();
+
+      }
+    </script>
+  </head>
+  <body id ="body">
+    <div class = "container">
+      <div class = "box" id = "box" style="max-width: 1280px;">
+        <!-- Title & About-->
+        <h1 class = "title" style="font-size:40px; margin-bottom: 20px;"> Congratulations on Completing the SPARK Assessment!</h1>
+        <img class = "imageabout" style = "width: 450px;  display: block; margin-left: auto; margin-right: auto; margin-bottom:0px;" src="/static/images/about.png">
+        <h1 class = "title" style="margin-top:10px; font-size:40px">SPARK Individual Report</h1>
+        <div style= "margin-top:20px;text-align: center;font-weight: bolder;color: #0070c0; font-size: 40px;" class="name"> {{ name }} </div>
+        <div style="margin-top:-20px;text-align: center; font-size: 18px;font-weight: bold; color: #0070c0"><p style="display: inline-block">Assessment completed on&nbsp</p> <div style="display: inline-block; font-size:22px;" id="current_date"></div></div>
+        <p> Thank you for completing the SPARK Assessment. Based on your responses, this SPARK individual report reflects your resilience quotient (RQ) and how it compares to the median level of our past survey respondents. More importantly, you will be shown a series of practical tips and strategies that you can apply immediately to your life, which will bring you closer to achieving your most treasured life and career goals. </p>
+        <div id="element-to-hide" data-html2canvas-ignore="true" class ="butcon" style = "position:relative; margin-top:20px; margin-bottom:20px;"><button class="ToPDF" onclick="pdf()"> <p style="margin:0"> Click here to download a copy of your report</p> </button></div>
+        <h2 style="font-size: 25px;margin-bottom:0; font-weight: bolder;">About SPARK:</h2>
+        <p style="margin-top:7px;">SPARK is a career resilience model designed to help you take charge, navigate and overcome setbacks in your career.</p>
+        <!-- RQ Section -->
+        <h1>Your Resilience Quotient (RQ)</h1>
+        <p> The graph below shows that you have an RQ of <strong > {{rq}}%</strong>, which is {{highorlow}} the median level of all survey respondents who have taken this assessment. It is categorized into 4 different levels and shows the percentage of respondents that fall into each level. </p>
+
+        <!-- ADD THIS -->
+        <div class = "rqgraphcontainer">
+          <div class = "rqbar">
+            <div class = "yourrq" style = "width:{{rq}}%"> <p class = "yourrqtext">Your RQ = {{rq}}%</p> </div>
+            <div class = "medianrq" style = "width:{{RQMedian}}%"> <p class = "medianrqtext">Median RQ = {{RQMedian}}%</p></div>
+          </div>
+          <div class ="explaincontainer"><p style="width:40%">Poor</p><p style="width:20%">Fair</p><p style="width:20%">Good</p><p style="width:20%">Excellent</p></div>
+          <div class="redtogreenbar"></div>
+          <div class ="numcontainer"><p style="width:20%">0</p><p style="width:20%">20</p><p style="width:20%">40</p><p style="width:20%">60</p><p style="width:10%">80</p><p style="text-align:right; width:10%">100</p></div>
+        </div>
+         <!--END OF ADD THIS -->
+
+
+
+        <div class="note">
+          <h2 style="margin-bottom:7px;"> 📝 Note:</h2>
+          <p style="margin-top:0px;">Your RQ is like a muscle - its strength fluctuates depending on how much effort you put into training and developing it. No matter your current result, know that you can always improve each SPARK pillar with practice.</p>
+        </div>
+        <!-- Pillars-->
+        <h1 style= "margin-top:70px">The SPARK Pillars</h1>
+        <p>The chart below illustrates your individual RQ in each of the SPARK pillars, which are displayed in percentages out of a maximum of 100%. They are calculated based on the sum of your responses for each pillar. You can use this chart to identify which areas you can potentially focus on and take action to improve your overall career resilience. </p>
+        <div class = "barcontainer">
+          <div>
+            <div class ="selfbeliefsec">
+              <p style="margin-bottom:5px;">{{ sb }}%</p>
+              <div class="loadbar">
+                <strong class="bar" style='background-color: #b1b2e4;height:{{ sb }}%;'></strong>
+                <img src="/static/images/Icons/SelfBelief.png">
+              </div>
+              <p class = "subtitleprogress"> Self-belief</p>
+            </div>
+
+            <div class ="purposesec">
+              <p style="margin-bottom:5px;">{{ p }}%</p>
+              <div class="loadbar">
+                <strong class="bar" style='background-color: #e19fd1;height:{{ p }}%;'></strong>
+                <img src="/static/images/Icons/Purpose.png">
+              </div>
+              <p class = "subtitleprogress"> Purpose</p>
+            </div>
+          </div>
+
+          <div>
+            <div class ="kssec">
+              <p style="margin-bottom:5px;">{{ ks }}%</p>
+              <div class="loadbar">
+                <strong class="bar" style='background-color: #ffd799;height:{{ ks }}%;'></strong>
+                <img src="/static/images/Icons/KindredSpirits.png">
+              </div>
+              <p class = "subtitleprogress"> Kindred <br> Spirits</p>
+            </div>
+            <div class ="resouresec">
+              <p style="margin-bottom:5px;">{{ r }}%</p>
+              <div class="loadbar">
+                <strong class="bar" style='background-color: #ffc1aa;height:{{ r }}%;'></strong>
+                <img src="/static/images/Icons/Resourcefulness.png">
+              </div>
+              <p class = "subtitleprogress"> Resourceful-<br>ness</p>
+            </div>
+          </div>
+          <div class ="adaptsec">
+            <p style="margin-bottom:5px;">{{ a }}%</p>
+            <div class="loadbar">
+              <strong class="bar" style="background-color: #f0aaa9; height:{{ a }}%;"></strong>
+              <img src="/static/images/Icons/Adaptability.png">
+            </div>
+            <p class = "subtitleprogress"> Adaptability</p>
+          </div>
+
+      </div>
+        <!-- RESULTS EXPLANATION-->
+        <div class = "strengths">
+          {% if strength %}
+          <h1>Your Pillar(s) of Strength</h1>
+          <h2 style="text-align:center; font-weight: 500; margin:0;">(This is the pillar in which you scored the highest)</h2>
+            {% for x in strength %}
+            <div style="display:flex; align-items: center;">
+              <div style="display: inline-block;">
+                <img class = "iconintext" src="/static/images/{{x[14]}}.JPG" style="vertical-align: middle; width: 120px; height: auto;">
+              </div>
+              <div style="display: inline-block; margin-left: 10px; ">
+                <h2 style="margin-bottom: 0;">{{x[0]}}</h2>
+                <p style="margin-top: 5px;">{{x[1]}}</p>
+              </div>
+            </div>
+            <h2 style="margin-bottom:0px;">Your Results:</h2>
+            <div class = "resultscon" style="display:flex; align-items: center;">
+              <div style="display: inline-block;">
+                {% if 1 in x %}
+                  <div class ="adaptsec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ a }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style="background-color: #f0aaa9; height:{{ a }}%;"></strong>
+                        <img src="/static/images/Icons/Adaptability.png">
+                        <strong class="bar" style="border-top:3px dashed #d74b49; border-radius:0px; z-index:4; height:{{AMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Adaptability</p>
+                    </div>
+                    <div class = "mediancolumn">
+                        <div class="loadbar" style="height:{{AMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                          <div style="flex-direction:column">
+                            <p class = "mediantitle">Median</p>
+                            <div class = "medianvaluebox" style="background-color:#d74b49">{{AMedian}}%</div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                {% elif 2 in x %}
+                  <div class ="kssec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ ks }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffd799;height:{{ ks }}%;'></strong>
+                        <img src="/static/images/Icons/KindredSpirits.png">
+                        <strong class="bar" style="border-top:3px dashed #f79d26; border-radius:0px; z-index:4; height:{{KsMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Kindred <br> Spirits</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{KsMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#f79d26">{{KsMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {% elif 3 in x %}
+                  <div class ="purposesec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ p }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #e19fd1;height:{{ p }}%;'></strong>
+                        <img src="/static/images/Icons/Purpose.png">
+                        <strong class="bar" style="border-top:3px dashed #c148a5; border-radius:0px; z-index:4; height:{{PMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Purpose</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{PMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#c148a5">{{PMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% elif 4 in x %}
+                  <div class ="resouresec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ r }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffc1aa;height:{{ r }}%;'></strong>
+                        <img src="/static/images/Icons/Resourcefulness.png">
+                        <strong class="bar" style="border-top:3px dashed #f64e15; border-radius:0px; z-index:4; height:{{RMedian}}%;"></strong>
+                      </div>
+                    <p class = "subtitleprogress"> Resourceful-<br>ness</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{RMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#f64e15">{{RMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% elif 5 in x %}
+                  <div class ="selfbeliefsec" style="display:flex">
+                    <div>
+                    <p style="margin-bottom:5px;">{{ sb }}%</p>
+                    <div class="loadbar">
+                      <strong class="bar" style='background-color: #b1b2e4;height:{{ sb }}%;'></strong>
+                      <img  src="/static/images/Icons/SelfBelief.png">
+                      <strong class="bar" style="border-top:3px dashed #4545ae; border-radius:0px; z-index:4; height:{{SbMedian}}%;"></strong>
+                    </div>
+                    <p class = "subtitleprogress"> Self-belief</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{SbMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#4545ae">{{SbMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class = "resulttext" style="display: inline-block; margin-left: 20px; ">
+                <p style="margin-top: 5px;">{{x[15]}}</p>
+              </div>
+            </div>
+            <h2>{{x[2]}}</h2>
+            <p>{{x[3]}}<p>
+            <ol style="font-size:22px;" >
+              <li style="font-weight:bold">{{x[4]}}</li>
+              <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[5]}}</li></ul>
+              <li style="font-weight:bold;">{{x[6]}}</li>
+              <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[7]}}</li></ul>
+              <li style="font-weight:bold">{{x[8]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[9]}}</li></ul>
+              <li style="font-weight:bold">{{x[10]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[11]}}</li></ul>
+              <li style="font-weight:bold">{{x[12]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 60px">{{x[13]}}</li></ul>
+            </ol>
+            {% endfor %}
+          {% else %}
+          {% endif %}
+        </div>
+
+
+        <div class = "weaknesses">
+          {% if weakness %}
+          <h1>Your Pillar(s) requiring Attention</h1>
+          <h2 style="text-align:center; font-weight: 500; margin:0;">(This is the pillar in which you scored the lowest)</h2>
+          {% for x in weakness %}
+            <div style="display:flex; align-items: center;">
+              <div style="display: inline-block;">
+                <img class = "iconintext" src="/static/images/{{x[14]}}.JPG" style="vertical-align: middle; width: 120px; height: auto;">
+              </div>
+              <div style="display: inline-block; margin-left: 10px; ">
+                <h2 style="margin-bottom: 0;">{{x[0]}}</h2>
+                <p style="margin-top: 5px;">{{x[1]}}</p>
+              </div>
+            </div>
+            <h2 style="margin-bottom:0px;">Your Results:</h2>
+            <div class = "resultscon" style="display:flex; align-items: center;">
+              <div style="display: inline-block;">
+                {% if 1 in x %}
+                  <div class ="adaptsec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ a }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style="background-color: #f0aaa9; height:{{ a }}%;"></strong>
+                        <img src="/static/images/Icons/Adaptability.png">
+                        <strong class="bar" style="border-top:3px dashed #d74b49; border-radius:0px; z-index:4; height:{{AMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Adaptability</p>
+                    </div>
+                    <div class = "mediancolumn">
+                        <div class="loadbar" style="height:{{AMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                          <div style="flex-direction:column">
+                            <p class = "mediantitle">Median</p>
+                            <div class = "medianvaluebox" style="background-color:#d74b49">{{AMedian}}%</div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                {% elif 2 in x %}
+                  <div class ="kssec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ ks }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffd799;height:{{ ks }}%;'></strong>
+                        <img src="/static/images/Icons/KindredSpirits.png">
+                        <strong class="bar" style="border-top:3px dashed #f79d26; border-radius:0px; z-index:4; height:{{KsMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Kindred <br> Spirits</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{KsMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#f79d26">{{KsMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {% elif 3 in x %}
+                  <div class ="purposesec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ p }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #e19fd1;height:{{ p }}%;'></strong>
+                        <img src="/static/images/Icons/Purpose.png">
+                        <strong class="bar" style="border-top:3px dashed #c148a5; border-radius:0px; z-index:4; height:{{PMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Purpose</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{PMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#c148a5">{{PMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% elif 4 in x %}
+                  <div class ="resouresec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ r }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffc1aa;height:{{ r }}%;'></strong>
+                        <img src="/static/images/Icons/Resourcefulness.png">
+                        <strong class="bar" style="border-top:3px dashed #f64e15; border-radius:0px; z-index:4; height:{{RMedian}}%;"></strong>
+                      </div>
+                    <p class = "subtitleprogress"> Resourceful-<br>ness</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{RMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#f64e15">{{RMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% elif 5 in x %}
+                  <div class ="selfbeliefsec" style="display:flex">
+                    <div>
+                    <p style="margin-bottom:5px;">{{ sb }}%</p>
+                    <div class="loadbar">
+                      <strong class="bar" style='background-color: #b1b2e4;height:{{ sb }}%;'></strong>
+                      <img  src="/static/images/Icons/SelfBelief.png">
+                      <strong class="bar" style="border-top:3px dashed #4545ae; border-radius:0px; z-index:4; height:{{SbMedian}}%;"></strong>
+                    </div>
+                    <p class = "subtitleprogress"> Self-belief</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{SbMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#4545ae">{{SbMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class = "resulttext" style="display: inline-block; margin-left: 20px; ">
+                <p style="margin-top: 5px;">{{x[15]}}</p>
+              </div>
+            </div>
+            <h2>{{x[2]}}</h2>
+            <p>{{x[3]}}<p>
+            <ol style="font-size:22px;" >
+              <li style="font-weight:bold">{{x[4]}}</li>
+              <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[5]}}</li></ul>
+              <li style="font-weight:bold;">{{x[6]}}</li>
+              <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[7]}}</li></ul>
+              <li style="font-weight:bold">{{x[8]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[9]}}</li></ul>
+              <li style="font-weight:bold">{{x[10]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[11]}}</li></ul>
+              <li style="font-weight:bold">{{x[12]}}</li>
+              <ul><li style="list-style-type: disc;margin-bottom: 60px">{{x[13]}}</li></ul>
+            </ol>
+            {% endfor %}
+          {% else %}
+          {% endif %}
+        </div>
+
+
+        <div class = "neutral">
+          {% if neutral %}
+          <h1>Your Neutral Pillar(s)</h1>
+          <h2 style="text-align:center; font-weight: 500; margin:0;">(Starting from the pillar with lower score to higher score)</h2>
+          {% for x in neutral %}
+          <div style="display:flex; align-items: center;">
+            <div style="display: inline-block;">
+              <img class = "iconintext" src="/static/images/{{x[14]}}.JPG" style="vertical-align: middle; width: 120px; height: auto;">
+            </div>
+            <div style="display: inline-block; margin-left: 10px; ">
+              <h2 style="margin-bottom: 0;">{{x[0]}}</h2>
+              <p style="margin-top: 5px;">{{x[1]}}</p>
+            </div>
+          </div>
+          <h2 style="margin-bottom:0px;">Your Results:</h2>
+            <div class = "resultscon" style="display:flex; align-items: center;">
+              <div style="display: inline-block;">
+                {% if 1 in x %}
+                  <div class ="adaptsec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ a }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style="background-color: #f0aaa9; height:{{ a }}%;"></strong>
+                        <img src="/static/images/Icons/Adaptability.png">
+                        <strong class="bar" style="border-top:3px dashed #d74b49; border-radius:0px; z-index:4; height:{{AMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Adaptability</p>
+                    </div>
+                    <div class = "mediancolumn">
+                        <div class="loadbar" style="height:{{AMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                          <div style="flex-direction:column">
+                            <p class = "mediantitle">Median</p>
+                            <div class = "medianvaluebox" style="background-color:#d74b49">{{AMedian}}%</div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                {% elif 2 in x %}
+                  <div class ="kssec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ ks }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffd799;height:{{ ks }}%;'></strong>
+                        <img src="/static/images/Icons/KindredSpirits.png">
+                        <strong class="bar" style="border-top:3px dashed #f79d26; border-radius:0px; z-index:4; height:{{KsMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Kindred <br> Spirits</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{KsMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#f79d26">{{KsMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                {% elif 3 in x %}
+                  <div class ="purposesec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ p }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" id = "tester" style='background-color: #e19fd1; height:{{ p }}%;'></strong>
+                        <img src="/static/images/Icons/Purpose.png">
+                        <strong class="bar" style="border-top:3px dashed #c148a5; border-radius:0px; z-index:4; height:{{PMedian}}%;"></strong>
+                      </div>
+                      <p class = "subtitleprogress"> Purpose</p>
+                    </div>
+                    <div class = "mediancolumn">
+                      <div class="loadbar" style="height:{{PMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                        <div style="flex-direction:column">
+                          <p class = "mediantitle">Median</p>
+                          <div class = "medianvaluebox" style="background-color:#c148a5">{{PMedian}}%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% elif 4 in x %}
+                  <div class ="resouresec" style="display:flex">
+                    <div>
+                      <p style="margin-bottom:5px;">{{ r }}%</p>
+                      <div class="loadbar">
+                        <strong class="bar" style='background-color: #ffc1aa;height:{{ r }}%;'></strong>
+                        <img src="/static/images/Icons/Resourcefulness.png">
+                        <strong class="bar" style="border-top:3px dashed #f64e15; border-radius:0px; z-index:4; height:{{RMedian}}%;"></strong>
+                      </div>
+                    <p class = "subtitleprogress"> Resourceful-<br>ness</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{RMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#f64e15">{{RMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% elif 5 in x %}
+                  <div class ="selfbeliefsec" style="display:flex">
+                    <div>
+                    <p style="margin-bottom:5px;">{{ sb }}%</p>
+                    <div class="loadbar">
+                      <strong class="bar" style='background-color: #b1b2e4;height:{{ sb }}%;'></strong>
+                      <img  src="/static/images/Icons/SelfBelief.png">
+                      <strong class="bar" style="border-top:3px dashed #4545ae; border-radius:0px; z-index:4; height:{{SbMedian}}%;"></strong>
+                    </div>
+                    <p class = "subtitleprogress"> Self-belief</p>
+                  </div>
+                  <div class = "mediancolumn">
+                    <div class="loadbar" style="height:{{SbMedian}}%; display: flex; background-color:rgba(0,0,0,0); width:fit-content;">
+                      <div style="flex-direction:column">
+                        <p class = "mediantitle">Median</p>
+                        <div class = "medianvaluebox" style="background-color:#4545ae">{{SbMedian}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              <div class = "resulttext" style="display: inline-block; margin-left: 20px; ">
+                <p style="margin-top: 5px;">{{x[15]}}</p>
+              </div>
+            </div>
+          <h2>{{x[2]}}</h2>
+          <p>{{x[3]}}<p>
+          <ol style="font-size:22px;" >
+            <li style="font-weight:bold">{{x[4]}}</li>
+            <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[5]}}</li></ul>
+            <li style="font-weight:bold;">{{x[6]}}</li>
+            <ul><li style="list-style-type: disc; margin-bottom: 22px">{{x[7]}}</li></ul>
+            <li style="font-weight:bold">{{x[8]}}</li>
+            <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[9]}}</li></ul>
+            <li style="font-weight:bold">{{x[10]}}</li>
+            <ul><li style="list-style-type: disc;margin-bottom: 22px">{{x[11]}}</li></ul>
+            <li style="font-weight:bold">{{x[12]}}</li>
+            <ul><li style="list-style-type: disc;margin-bottom: 40px">{{x[13]}}</li></ul>
+          </ol>
+          {% endfor %}
+          {% else %}
+          {% endif %}
+        </div>
+
+        <div class ="nextsteps">
+          <h2 style="margin-bottom:0">Next Steps</h2>
+          <p style="margin-top:5px; margin-bottom: 60px">Thank you for taking the time to learn about your RQ! This is a small win but a significant step toward achieving the long-term success you desire. However, gaining awareness about your RQ alone is not enough, unless you take action. <br> <br> So, as a practical next step, we would like to invite you to join us on a <span style="font-weight:bold">5-day SPARK Journey Email Course </span> (if you have not signed up already) to help you transform your perspectives, beliefs, and habits by harnessing the power of career resilience. Each day for 5 days, you will receive a new lesson filled with practical tips and bite-sized exercises delivered to your inbox. Most importantly, you will have the opportunity to create a personal SPARK action plan to help you better navigate and build a thriving career. </p>
+          <img class = "nextsteppic" id="birdpicmobile" style = "min-width: 660px; grid-area: inner-div; width: 68%;" src="/static/images/birdpic.jpeg">
+        <div style="margin-bottom:60px; display: grid; place-items: center; grid-template-areas: 'inner-div';">
+          <img class = "nextsteppic" style = "min-width: 660px; grid-area: inner-div; width: 68%;" src="/static/images/birdpic.jpeg">
+          <div class = "nexstepbox" style="min-width:273px; min-height:273px; display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: inner-div; margin-left: 35%; background-color: black; height:80%; width:30%">
+            <h2 style="margin-top:0px; padding: 0px 15px 0px 15px; color:white; text-align:center;">Take Flight on a 5-Day SPARK Journey</h2>
+            <p style="margin-top: 0px;color:white; text-align:center; padding: 0px 20px 0px 20px; font-size: 18px;">Join our feathered friends on this egg-citing conquest to help you better navigate and build a thriving career!</p>
+
+            <a href="https://www.fowlplay.games/5daysparkjourney" style="font-size:20px; margin-top:5px; text-decoration:none; font-weight: bolder; background: white; color:black; padding: 8px 20px 8px 20px;"> Sign up now</a>
+          </div>
+        </div>
+        </div>
+
+        <div class="learnmoresec">
+          <h1 class = "learntext">To learn more about how the SPARK Assessment can benefit your team or organization, contact us <a href="https://www.fowlplay.games/contact" style="text-decoration:underline;color:black;" > here</a>.</h1>
+        </div>
+
+        <img class = "imageabout" style = "margin-top: 60px; width: 450px;  display: block; margin-left: auto; margin-right: auto;" src="/static/images/about.png">
+        <h1>Career Resilience Assessment</h1>
+        <p>Note: Fowl Play, its affiliates and its agents shall not, in any event, be liable for any consequences, howsoever arising, out of or in connection with your use of this report.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    date = new Date();
+    year = date.getFullYear();
+    month = date.getMonth();
+    day = date.getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+   "July", "August", "September", "October", "November", "December"
+    ];
+    document.getElementById("current_date").innerHTML = day + " " + monthNames[month] + " " + year;
+    </script>
+</html>
