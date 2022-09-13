@@ -28,4 +28,8 @@ Running on window:
 (3) run: >> $env:FLASK_ENV="development"
 (4) run: >> flask run
  
+
+Transfer:
+(1) go to console on python anywhere and run: >> git clone URL
+(2) go to app.py and change the csv referencing location 
  
