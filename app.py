@@ -84,7 +84,7 @@ def results():
         scores.append(math.ceil((total/48)*100));
         i += 1;
 
-    emailresult = open("/home/fletcherhan/SPARKAssessmentV1/ResultData.csv");
+    emailresult = open("/data/ResultData.csv");
     csvreads = csv.reader(emailresult);
     resultheader = next(csvreads);
     resultIndex = resultheader.index(" Email");
@@ -110,15 +110,15 @@ def results():
 
     if email in rowdatas:
         emailIndex = rowdatas.index(email);
-        df = pd.read_csv("/home/fletcherhan/SPARKAssessmentV1/ResultData.csv")
+        df = pd.read_csv("/data/ResultData.csv")
         p = 0;
         for x in resultheader:
             df.loc[emailIndex, x] = DataToCSV[p];
             p += 1;
-        df.to_csv("/home/fletcherhan/SPARKAssessmentV1/ResultData.csv", index=False);
+        df.to_csv("/data/ResultData.csv", index=False);
         
     else:
-        f = open('/home/fletcherhan/SPARKAssessmentV1/ResultData.csv', 'a', newline='')
+        f = open('/data/ResultData.csv', 'a', newline='')
         writer = csv.writer(f) 
         writer.writerow(DataToCSV)
         f.close()   
@@ -244,7 +244,7 @@ def results():
     "If you’re feeling helpless in your career, try to find mastery in another area of your life. It will help you to build self-efficacy (one's belief in one's ability to succeed in specific situations or accomplish a task), and this, in turn, builds up your self-esteem, which transcends to other areas of your life including your career."]
 
     
-    file = open('/home/fletcherhan/SPARKAssessmentV1/ResultData.csv')
+    file = open('/data/ResultData.csv')
     csvreader = csv.reader(file)
     rows = [];
     for row in csvreader:
@@ -279,7 +279,7 @@ def results():
     AMedian = round(AMedian/(i-1));
     RQMedian = round(RQMedian/(i-1));
     file.close();
-    resultsx = open("/home/fletcherhan/SPARKAssessmentV1/Results.csv");
+    resultsx = open("/data/Results.csv");
     csvread = csv.reader(resultsx);
     dico["resilient quotient"] = rq;
     rowdata = [];
