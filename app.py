@@ -9,15 +9,18 @@ import requests
 
 app = Flask(__name__)
 
+#changing url to "home" instead of "/index.html"
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("index.html")
 
+#changing url to "assessment" instead of "/userdetails.html"
 @app.route("/assessment", methods =["GET", "POST"])
 def assessment():
     return render_template("userdetails.html")
 
+#retry function in case error unknown occurs, function runs again
 def retry(func, retries=3):
     def retry_wrapper(*args, **kwargs):
         attempts = 0
@@ -30,22 +33,25 @@ def retry(func, retries=3):
 
     return retry_wrapper
 
+#results page
 @app.route("/results", methods =["GET", "POST"])
 @retry
 def results():
+    #getting user details from form
     data = request.form;
+    #if user details are missing data (which is a dictionary) will be empty and results page will redirect user to home
     if bool(data) == False:
         return render_template('index.html');
+    #getting user details from data
     fname = data['fname'];
     gender = data['gender'];
     country = data['country'];
     email = data['femail'];
     age = data['age'];
     lifeStage = data['life'];
-
+    #getting keys from data dictionary so results can be extracted
     dataKeys = data.keys();
     questions = [];
-
 
     for x in dataKeys:
         if "cat" in x:
@@ -107,7 +113,7 @@ def results():
         rq=rq+i;
     rq = rq/5;
     DataToCSV.append(rq);
-
+    #
     if email in rowdatas:
         emailIndex = rowdatas.index(email);
         df = pd.read_csv("/data/ResultData.csv")
@@ -310,6 +316,8 @@ def results():
     resultsx.close()
     imagenumbering = [1,2,3,4,5];
     #1: "Adaptability", 2: "Kindred Spirits", 3: "Purpose", 4: "Resourcefulness", 5: "Self-belief"
+    
+    #adding strenghts info into list so it can be sent to the frontend
     for i in strength:
         z = 0;
         while z < len(title):
@@ -332,7 +340,7 @@ def results():
                 z += 1;
             else:
                 z += 1;
-    
+    #adding weaknesses info into list so it can be sent to the frontend
     for i in weakness:
         z = 0;
         while z < len(title):
@@ -355,7 +363,9 @@ def results():
                 z += 1;
             else:
                 z += 1;
-    neutral.sort();
+    neutral.sort(); #sorting results from lowest to highest
+
+    #adding neutral info into list so it can be sent to the frontend
     for i in neutrall:
         z = 0;
         while z < len(title):
@@ -378,12 +388,13 @@ def results():
                 z += 1;
             else:
                 z += 1;
-  
+    #change text based on rq if it is higher or lower than rq median
     if rq > RQMedian:
         highorlow = "higher than"
     else:
         highorlow = "lower than"
 
+    #sending results to the frontend
     return render_template("results.html", sb = scores[0], p = scores[1], a = scores[2], r = scores[3], ks = scores[4], name = fname, strength = strength, weakness = weakness, neutral= neutrall, rq=rq, AMedian = AMedian, KsMedian = KsMedian, PMedian=PMedian, RMedian = RMedian, SbMedian=SbMedian, RQMedian = RQMedian, highorlow = highorlow )
 
 if __name__=='__main__':
